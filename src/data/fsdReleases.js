@@ -151,4 +151,75 @@ const fsdReleases = [
   },
 ];
 
+/**
+ * Trial / testing releases — these branch off from v13.2.9
+ * and represent the v14 generation currently in rollout.
+ */
+const fsdTrialReleases = [
+  {
+    version: "FSD 14.1.1",
+    date: "2025-10-07",
+    description:
+      "First public FSD v14 release (HW4 only). 10x larger neural net from Robotaxi program. Arrival Options, emergency vehicle yielding, SLOTH/MAD MAX speed profiles.",
+    internal: false,
+  },
+  {
+    version: "FSD 14.1.3",
+    date: "2025-10-20",
+    description:
+      "Wider rollout. Testers called it 'a monumental leap in responsiveness, smoothness and confidence' with 'incredibly human-like' driving.",
+    internal: false,
+  },
+  {
+    version: "FSD 14.1.5",
+    date: "2025-11-01",
+    description:
+      "Employee-only internal build. Skipped for public release. Included early Cybertruck FSD v14 testing among select influencers.",
+    internal: true,
+  },
+  {
+    version: "FSD 14.1.7",
+    date: "2025-11-12",
+    description:
+      "Expanded FSD v14 to Cybertruck and all HW4 S/3/X/Y. Noticeably smoother than 14.1.4 in complex driving environments.",
+    internal: false,
+  },
+  {
+    version: "FSD 14.2",
+    date: "2025-11-21",
+    description:
+      "Major upgrade — 'second-biggest update ever after v12.' Upgraded vision encoder with higher resolution for emergency vehicles, obstacles, and gestures.",
+    internal: false,
+  },
+  {
+    version: "FSD 14.2.1",
+    date: "2025-11-27",
+    description:
+      "Refined handling of unprotected turns, lane changes, vehicle cut-ins, and school buses on the upgraded vision encoder.",
+    internal: false,
+  },
+  {
+    version: "FSD 14.2.2",
+    date: "2025-12-22",
+    description:
+      "Improved fault recovery and system reliability. Added windshield residue detection alerting for front camera visibility.",
+    internal: false,
+  },
+  {
+    version: "FSD 14.2.2.3",
+    date: "2026-01-13",
+    description:
+      "First FSD update of 2026. Neural net weight refinements and driving behavior tuning on the 2025.45 firmware branch.",
+    internal: false,
+  },
+  {
+    version: "FSD 14.2.2.5",
+    date: "2026-02-16",
+    description:
+      "Latest public FSD release. Available for HW4 Model Y, Model 3, and Cybertruck. Bundled with Grok navigation and Dog Mode Live Activity.",
+    internal: false,
+  },
+];
+
+export { fsdReleases, fsdTrialReleases };
 export default fsdReleases;

@@ -1,5 +1,5 @@
 import predictNextRelease from "../utils/predictNextRelease";
-import fsdReleases from "../data/fsdReleases";
+import { fsdReleases } from "../data/fsdReleases";
 
 export default function Header() {
   const prediction = predictNextRelease(fsdReleases);
@@ -18,6 +18,24 @@ export default function Header() {
           FSD <span className="accent">Timeline</span>
         </h1>
         <p className="subtitle">Tesla Full Self-Driving release history</p>
+        <div className="legend">
+          <span className="legend-item">
+            <span className="legend-dot stable" />
+            stable
+          </span>
+          <span className="legend-item">
+            <span className="legend-dot trial" />
+            v14 trial
+          </span>
+          <span className="legend-item">
+            <span className="legend-dot internal" />
+            internal
+          </span>
+          <span className="legend-item">
+            <span className="legend-dot predicted" />
+            predicted
+          </span>
+        </div>
       </div>
       {prediction && (
         <div className="header-right">

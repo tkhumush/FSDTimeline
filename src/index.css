@@ -17,6 +17,10 @@
   --accent-glow: rgba(0, 240, 255, 0.3);
   --prediction: #ff2e6a;
   --prediction-glow: rgba(255, 46, 106, 0.3);
+  --trial: #f5a623;
+  --trial-glow: rgba(245, 166, 35, 0.3);
+  --internal: #8b5cf6;
+  --internal-glow: rgba(139, 92, 246, 0.3);
   --font-mono: "Share Tech Mono", "Courier New", monospace;
   --font-display: "Orbitron", sans-serif;
 }

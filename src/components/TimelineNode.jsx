@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export default function TimelineNode({ release, index, isPrediction }) {
+export default function TimelineNode({
+  release,
+  index,
+  isPrediction,
+  isTrial,
+  isInternal,
+}) {
   const [expanded, setExpanded] = useState(false);
   const isTop = index % 2 === 0;
 
@@ -10,11 +16,18 @@ export default function TimelineNode({ release, index, isPrediction }) {
     month: "short",
   });
 
+  const classes = [
+    "timeline-node",
+    isTop ? "top" : "bottom",
+    isPrediction ? "prediction" : "",
+    isTrial ? "trial" : "",
+    isInternal ? "internal" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div
-      className={`timeline-node ${isTop ? "top" : "bottom"} ${isPrediction ? "prediction" : ""}`}
-      onClick={() => setExpanded((e) => !e)}
-    >
+    <div className={classes} onClick={() => setExpanded((e) => !e)}>
       {/* Connector line from node to the spine */}
       <div className="connector" />
 
@@ -23,6 +36,10 @@ export default function TimelineNode({ release, index, isPrediction }) {
 
       {/* Card */}
       <div className={`card ${expanded ? "expanded" : ""}`}>
+        {isInternal && <span className="internal-badge">internal</span>}
+        {isTrial && !isInternal && (
+          <span className="trial-badge">trial</span>
+        )}
         <span className="version">
           {isPrediction ? "PREDICTED" : release.version}
         </span>

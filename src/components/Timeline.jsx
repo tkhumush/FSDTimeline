@@ -1,7 +1,8 @@
 import { useRef, useEffect, useMemo } from "react";
-import fsdReleases from "../data/fsdReleases";
+import { fsdReleases } from "../data/fsdReleases";
 import predictNextRelease from "../utils/predictNextRelease";
 import TimelineNode from "./TimelineNode";
+import TrialBranch from "./TrialBranch";
 
 export default function Timeline() {
   const scrollRef = useRef(null);
@@ -14,12 +15,11 @@ export default function Timeline() {
 
   const prediction = useMemo(() => predictNextRelease(fsdReleases), []);
 
-  // Scroll to center (latest real releases) on mount
+  // Scroll to the right end (where trial branch lives) on mount
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    // Scroll so the latest release is roughly centered
-    const scrollTarget = el.scrollWidth - el.clientWidth * 0.6;
+    const scrollTarget = el.scrollWidth - el.clientWidth * 0.5;
     el.scrollTo({ left: scrollTarget, behavior: "instant" });
   }, []);
 
@@ -30,10 +30,12 @@ export default function Timeline() {
           {/* Horizontal spine */}
           <div className="spine" />
 
+          {/* Stable releases */}
           {sorted.map((release, i) => (
             <TimelineNode key={release.version} release={release} index={i} />
           ))}
 
+          {/* Prediction node on the main spine */}
           {prediction && (
             <TimelineNode
               release={prediction}
@@ -41,6 +43,9 @@ export default function Timeline() {
               isPrediction
             />
           )}
+
+          {/* Trial branch forks off here */}
+          <TrialBranch />
         </div>
       </div>
 
