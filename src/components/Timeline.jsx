@@ -3,7 +3,7 @@ import { fsdReleases } from "../data/fsdReleases";
 import TimelineNode from "./TimelineNode";
 import TrialBranch from "./TrialBranch";
 
-export default function Timeline() {
+export default function Timeline({ onSupportClick }) {
   const scrollRef = useRef(null);
 
   const sorted = useMemo(
@@ -37,9 +37,12 @@ export default function Timeline() {
         </div>
       </div>
 
-      {/* Scroll hint */}
+      {/* Scroll hint + support link */}
       <div className="scroll-hint">
         <span>&larr;</span> scroll <span>&rarr;</span>
+        <button className="support-link" onClick={onSupportClick}>
+          &#9889; support the developer
+        </button>
       </div>
     </div>
   );
