@@ -149,6 +149,72 @@ const fsdReleases = [
     description:
       "Combined update shipping both FSD 12.6.x (HW3) and 13.2.x (HW4) in a single release, streamlining updates across hardware.",
   },
+  {
+    version: "FSD 14.1.1",
+    date: "2025-10-07",
+    description:
+      "First v14 release for HW4, incorporating learnings from the Robotaxi program. 10x model upgrade with more parameters and improved perception.",
+  },
+  {
+    version: "FSD 14.1.3",
+    date: "2025-10-20",
+    description:
+      "Expanded rollout to the general public across Model 3, Y, S, X. First v14 version widely available beyond early access testers.",
+  },
+  {
+    version: "FSD 14.1.4",
+    date: "2025-10-25",
+    description:
+      "Rapid iteration on v14.1 with stability fixes and refinements to the new perception pipeline.",
+  },
+  {
+    version: "FSD 14.1.7",
+    date: "2025-11-12",
+    description:
+      "Continued v14.1 improvements with enhanced handling of complex traffic scenarios and edge cases.",
+  },
+  {
+    version: "FSD 14.2",
+    date: "2025-11-21",
+    description:
+      "Wide public rollout begins. Upgraded vision encoder with higher-res features, improved emergency vehicle and gesture handling.",
+  },
+  {
+    version: "FSD 14.2.1",
+    date: "2025-11-27",
+    description:
+      "Point release with driving smoothness refinements and improved behavior at complex intersections.",
+  },
+  {
+    version: "FSD 14.2.2",
+    date: "2025-12-22",
+    description:
+      "Major vision and navigation upgrades. Tesla launches 30-day free FSD trial to ~1.5M HW4 vehicles for the holiday season.",
+  },
+  {
+    version: "FSD 14.2.2.2",
+    date: "2025-12-28",
+    description:
+      "Rapid follow-up with further stability improvements and edge-case fixes across the expanding user base.",
+  },
+  {
+    version: "FSD 14.2.2.3",
+    date: "2026-01-13",
+    description:
+      "Continued refinement with improved path planning and smoother lane-change behavior in dense traffic.",
+  },
+  {
+    version: "FSD 14.2.2.4",
+    date: "2026-01-27",
+    description:
+      "Expanded rollout across US and Canada. Ongoing improvements to the unified end-to-end driving model.",
+  },
+  {
+    version: "FSD 14.2.2.5",
+    date: "2026-02-16",
+    description:
+      "Latest public release for HW4. Incremental improvements as Tesla prepares for the subscription-only FSD model.",
+  },
 ];
 
 export default fsdReleases;

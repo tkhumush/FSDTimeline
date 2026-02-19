@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function TimelineNode({ release, index, isPrediction }) {
+export default function TimelineNode({ release, index }) {
   const [expanded, setExpanded] = useState(false);
   const isTop = index % 2 === 0;
 
@@ -12,7 +12,7 @@ export default function TimelineNode({ release, index, isPrediction }) {
 
   return (
     <div
-      className={`timeline-node ${isTop ? "top" : "bottom"} ${isPrediction ? "prediction" : ""}`}
+      className={`timeline-node ${isTop ? "top" : "bottom"}`}
       onClick={() => setExpanded((e) => !e)}
     >
       {/* Connector line from node to the spine */}
@@ -23,20 +23,9 @@ export default function TimelineNode({ release, index, isPrediction }) {
 
       {/* Card */}
       <div className={`card ${expanded ? "expanded" : ""}`}>
-        <span className="version">
-          {isPrediction ? "PREDICTED" : release.version}
-        </span>
+        <span className="version">{release.version}</span>
         <span className="date">{dateLabel}</span>
-        {expanded && (
-          <p className="description">
-            {isPrediction
-              ? `Based on an average interval of ~${release.avgDays} days between releases, the next FSD update is estimated around this date.`
-              : release.description}
-          </p>
-        )}
-        {isPrediction && !expanded && (
-          <span className="tap-hint">tap for details</span>
-        )}
+        {expanded && <p className="description">{release.description}</p>}
       </div>
     </div>
   );
