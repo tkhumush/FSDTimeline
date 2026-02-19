@@ -3,12 +3,11 @@ import { useState } from "react";
 export default function TimelineNode({
   release,
   index,
-  isPrediction,
   isTrial,
   isInternal,
 }) {
   const [expanded, setExpanded] = useState(false);
-  const isTop = index % 2 === 0;
+  const isTop = isTrial ? true : index % 2 === 0;
 
   const dateObj = new Date(release.date + "T00:00:00");
   const dateLabel = dateObj.toLocaleDateString("en-US", {
@@ -19,7 +18,6 @@ export default function TimelineNode({
   const classes = [
     "timeline-node",
     isTop ? "top" : "bottom",
-    isPrediction ? "prediction" : "",
     isTrial ? "trial" : "",
     isInternal ? "internal" : "",
   ]
@@ -40,19 +38,10 @@ export default function TimelineNode({
         {isTrial && !isInternal && (
           <span className="trial-badge">trial</span>
         )}
-        <span className="version">
-          {isPrediction ? "PREDICTED" : release.version}
-        </span>
+        <span className="version">{release.version}</span>
         <span className="date">{dateLabel}</span>
         {expanded && (
-          <p className="description">
-            {isPrediction
-              ? `Based on an average interval of ~${release.avgDays} days between releases, the next FSD update is estimated around this date.`
-              : release.description}
-          </p>
-        )}
-        {isPrediction && !expanded && (
-          <span className="tap-hint">tap for details</span>
+          <p className="description">{release.description}</p>
         )}
       </div>
     </div>

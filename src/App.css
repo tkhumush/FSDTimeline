@@ -80,38 +80,6 @@
   box-shadow: 0 0 4px var(--internal-glow);
 }
 
-.legend-dot.predicted {
-  border-color: var(--prediction);
-  box-shadow: 0 0 4px var(--prediction-glow);
-}
-
-.header-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.15rem;
-}
-
-.prediction-label {
-  font-size: 0.55rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-dim);
-}
-
-.prediction-date {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--prediction);
-  text-shadow: 0 0 16px var(--prediction-glow);
-}
-
-.prediction-meta {
-  font-size: 0.6rem;
-  color: var(--text-dim);
-}
-
 /* ── Timeline Wrapper ── */
 .timeline-wrapper {
   flex: 1;
@@ -193,17 +161,6 @@
   box-shadow: 0 0 14px var(--accent-glow);
 }
 
-.timeline-node.prediction .dot {
-  border-color: var(--prediction);
-  box-shadow: 0 0 6px var(--prediction-glow);
-  animation: pulse-prediction 2s ease-in-out infinite;
-}
-
-.timeline-node.prediction:hover .dot {
-  background: var(--prediction);
-  box-shadow: 0 0 14px var(--prediction-glow);
-}
-
 /* Connector from card to spine */
 .timeline-node .connector {
   position: absolute;
@@ -217,11 +174,6 @@
 .timeline-node:hover .connector {
   background: var(--accent);
   box-shadow: 0 0 4px var(--accent-glow);
-}
-
-.timeline-node.prediction:hover .connector {
-  background: var(--prediction);
-  box-shadow: 0 0 4px var(--prediction-glow);
 }
 
 /* Top nodes: card above spine */
@@ -272,13 +224,6 @@
     inset 0 0 12px rgba(0, 240, 255, 0.03);
 }
 
-.timeline-node.prediction:hover .card {
-  border-color: var(--prediction);
-  box-shadow:
-    0 0 12px var(--prediction-glow),
-    inset 0 0 12px rgba(255, 46, 106, 0.03);
-}
-
 .card .version {
   display: block;
   font-family: var(--font-display);
@@ -288,11 +233,6 @@
   color: var(--accent);
   text-transform: uppercase;
   margin-bottom: 0.2rem;
-}
-
-.timeline-node.prediction .card .version {
-  color: var(--prediction);
-  animation: flicker 3s ease-in-out infinite;
 }
 
 .card .date {
@@ -309,15 +249,6 @@
   color: var(--text);
   opacity: 0;
   animation: fadeIn 0.25s ease forwards;
-}
-
-.card .tap-hint {
-  display: block;
-  margin-top: 0.4rem;
-  font-size: 0.5rem;
-  color: var(--text-dim);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 /* ── Scroll Hint ── */
@@ -350,26 +281,6 @@
   }
 }
 
-@keyframes pulse-prediction {
-  0%,
-  100% {
-    box-shadow: 0 0 6px var(--prediction-glow);
-  }
-  50% {
-    box-shadow: 0 0 18px var(--prediction-glow);
-  }
-}
-
-@keyframes flicker {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
 @keyframes fade-hint {
   0%,
   100% {
@@ -389,19 +300,21 @@
   margin-left: -20px;
 }
 
-/* Fork connector — SVG diagonal from main spine to branch */
+/* Fork connector — smooth cubic bezier curve from main spine to branch spine */
 .fork-connector {
   position: absolute;
-  left: -10px;
-  top: calc(50% - 120px);
-  width: 60px;
-  height: 120px;
+  left: -30px;
+  top: calc(50% - 80px);
+  width: 80px;
+  height: 80px;
   z-index: 2;
+  pointer-events: none;
 }
 
 .fork-connector svg {
   width: 100%;
   height: 100%;
+  overflow: visible;
 }
 
 /* "v14 trial" label at the fork point */
@@ -464,28 +377,18 @@
   box-shadow: 0 0 14px var(--trial-glow);
 }
 
-/* Top trial cards: above the branch spine */
-.trial-branch .timeline-node.top .connector {
+/* All trial cards: above the branch spine only */
+.trial-branch .timeline-node .connector {
   top: calc(50% - 120px);
   height: 40px;
   background: var(--trial);
   opacity: 0.3;
 }
 
-.trial-branch .timeline-node.top .card {
+.trial-branch .timeline-node .card {
+  position: absolute;
   bottom: calc(50% + 124px);
-}
-
-/* Bottom trial cards: between branch spine and main spine */
-.trial-branch .timeline-node.bottom .connector {
-  top: calc(50% - 76px);
-  height: 40px;
-  background: var(--trial);
-  opacity: 0.3;
-}
-
-.trial-branch .timeline-node.bottom .card {
-  top: calc(50% - 32px);
+  top: auto;
 }
 
 .trial-branch .timeline-node:hover .connector {
