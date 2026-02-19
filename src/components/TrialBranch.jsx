@@ -13,15 +13,16 @@ export default function TrialBranch() {
 
   return (
     <div className="trial-branch">
-      {/* Fork indicator — diagonal line from main spine to branch */}
+      {/* Fork connector — smooth curve from main spine up to branch spine */}
       <div className="fork-connector">
-        <svg viewBox="0 0 60 120" preserveAspectRatio="none">
+        <svg viewBox="0 0 80 80" preserveAspectRatio="none">
+          {/* Main curve: starts on the main spine (bottom-left), curves up to the branch spine (top-right) */}
           <path
-            d="M30 120 Q30 60 55 10"
+            d="M0 80 C40 80, 40 0, 80 0"
             stroke="var(--trial)"
             strokeWidth="1"
             fill="none"
-            strokeDasharray="4 3"
+            opacity="0.4"
           />
         </svg>
       </div>
@@ -31,7 +32,7 @@ export default function TrialBranch() {
         <span className="branch-tag">v14 trial</span>
       </div>
 
-      {/* Branch spine + nodes */}
+      {/* Branch spine + nodes (all cards above) */}
       <div className="branch-track">
         <div className="branch-spine" />
         {sorted.map((release, i) => (
